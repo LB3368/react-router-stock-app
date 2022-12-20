@@ -1,20 +1,35 @@
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import AppRouter from "./router/AppRouter";
-import { amber, orange } from "@mui/material/colors";
-import { Provider } from "react-redux";
-import store, { persistor } from "./app/store";
-import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
-import { PersistGate } from "redux-persist/es/integration/react";
-import "@tremor/react/dist/esm/tremor.css";
+import React from 'react'
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Nav';
 import About from './pages/About';
 import DashBoard from './pages/DashBoard'
-import Home from './pages/HomePage';
+import HomePage from './pages/HomePage';
 import Stock from './components/Stock';
 
+
+function App() {
+	return (
+		<div className="App">
+			<Header />
+			<Routes>
+				<Route path="/" element={<HomePage />} />
+				<Route path="/about" element={<About />} />
+				<Route path="/stocks" element={<DashBoard />} />
+				<Route path="/stocks/:symbol" element={<Stock />} />
+			</Routes>
+		</div>
+	);
+}
+
+export default App;
+
+
+
+
+
+
+/*
 function App() {
   
   const theme = createTheme({
@@ -53,9 +68,4 @@ function App() {
 
   );
 }
-
-
-
-
-
-export default App
+export default App*/
